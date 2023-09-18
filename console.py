@@ -116,38 +116,38 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, args):
         """ Create an object of any class"""
          arg_list = arg.split()
-    if len(arg_list) == 0:
-        print("** class name missing **")
-        return
-    try:
-        cls = eval(arg_list[0])
-    except NameError:
-        print("** class doesn't exist **")
-        return
-    kwargs = {}
-    for i in range(1, len(arg_list)):
-        param = arg_list[i].split("=")
-        if len(param) != 2:
-            continue
-        key = param[0]
-        value = param[1]
-        if value.startswith('"'):
-            value = value.strip('"').replace("_", " ")
-            value = value.replace('\\"', '"')
-        elif '.' in value:
-            try:
-                value = float(value)
-            except ValueError:
+        if len(arg_list) == 0:
+            print("** class name missing **")
+            return
+        try:
+            cls = eval(arg_list[0])
+        except NameError:
+            print("** class doesn't exist **")
+            return
+        kwargs = {}
+        for i in range(1, len(arg_list)):
+            param = arg_list[i].split("=")
+            if len(param) != 2:
                 continue
-        else:
-            try:
-                value = int(value)
-            except ValueError:
-                continue
-        kwargs[key] = value
-    instance = cls(**kwargs)
-    instance.save()
-    print(instance.id)
+            key = param[0]
+            value = param[1]
+            if value.startswith('"'):
+                value = value.strip('"').replace("_", " ")
+                value = value.replace('\\"', '"')
+            elif '.' in value:
+                try:
+                    value = float(value)
+                except ValueError:
+                    continue
+            else:
+                try:
+                    value = int(value)
+                except ValueError:
+                    continue
+            kwargs[key] = value
+        instance = cls(**kwargs)
+        instance.save()
+        print(instance.id)
 
     def help_create(self):
         """ Help information for the create method """
