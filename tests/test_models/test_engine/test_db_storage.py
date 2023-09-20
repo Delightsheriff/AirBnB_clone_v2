@@ -172,4 +172,4 @@ class TestDBStorage(unittest.TestCase):
         cursor1.close()
         dbc1.close()
         cursor.close()
-        dbc.close(
+        dbc.close()

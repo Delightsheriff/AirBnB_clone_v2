@@ -144,4 +144,4 @@ class TestHBNBCommand(unittest.TestCase):
             clear_stream(cout)
             cons.onecmd('count State')
             cursor.close()
-            dbc.close(
+            dbc.close()
