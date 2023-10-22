@@ -32,6 +32,7 @@ def c_text(text):
 
 
 # Define the route for /python/<text>
+@app.route('/python/')
 @app.route('/python/<text>', strict_slashes=False)
 def python_text(text='is cool'):
     # Replace underscore with space
