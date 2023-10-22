@@ -2,7 +2,7 @@
 """A script that starts a Flask web application"""
 
 # Import Flask
-from flask import Flask
+from flask import Flask, render_template
 
 # Create an instance of Flask
 app = Flask(__name__)
